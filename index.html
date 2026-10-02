@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Login in - SARIS</title>
+<style>
+:root{
+  --bg:#fff; --text:#344767; --muted:#7b809a; --brand:#17c1e8; --link:#1a73e8;
+  --border:#d2d6da; --focus:#e9a6d9; --toggle:#e9ecef;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#1a2035;--text:#e6e9f2;--muted:#9aa3bd;--border:#3a4260;--toggle:#3a4260;}
+}
+:root[data-theme="dark"]{--bg:#1a2035;--text:#e6e9f2;--muted:#9aa3bd;--border:#3a4260;--toggle:#3a4260;}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Roboto,"Helvetica Neue",Arial,sans-serif;min-height:100vh;display:flex;flex-direction:column}
+main{flex:1;display:flex;align-items:center;justify-content:center;padding:32px 24px}
+.card{width:100%;max-width:420px}
+h1{color:var(--brand);font-weight:400;font-size:2rem;line-height:1.35;margin:0 0 48px}
+label.field{display:block;font-size:.95rem;margin:0 0 10px 8px;text-transform:uppercase}
+input[type=email],input[type=password]{width:100%;height:56px;border:1px solid var(--border);border-radius:12px;padding:0 16px;font-size:1rem;background:transparent;color:var(--text);outline:none;margin-bottom:24px}
+input:focus{border-color:var(--focus);box-shadow:0 0 0 4px rgba(233,166,217,.6)}
+.row{display:flex;align-items:center;gap:16px;margin:8px 0 40px}
+.switch{position:relative;width:56px;height:28px;flex:none}
+.switch input{opacity:0;position:absolute;inset:0;margin:0;cursor:pointer;z-index:1}
+.switch span{position:absolute;inset:0;background:var(--toggle);border-radius:28px;transition:.2s}
+.switch span::after{content:"";position:absolute;top:2px;left:2px;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.3);transition:.2s}
+.switch input:checked+span{background:var(--brand)}
+.switch input:checked+span::after{transform:translateX(28px)}
+a{color:var(--link);text-decoration:none}
+button{width:100%;height:56px;border:0;border-radius:12px;color:#fff;font-size:1rem;cursor:pointer;background:linear-gradient(90deg,#fbc02d,#f9a32f 50%,#f75f3b);box-shadow:0 6px 12px rgba(0,0,0,.15)}
+button:focus-visible{outline:3px solid var(--text);outline-offset:3px}
+.new{text-align:center;margin-top:32px}
+.new a{color:var(--brand)}
+footer{text-align:center;color:var(--muted);padding:32px 24px;font-size:1.05rem}
+#msg{margin-top:16px;text-align:center;color:var(--muted);min-height:1.2em}
+</style>
+</head>
+<body>
+<main>
+  <div class="card">
+    <h1>SARIS - Academic Records Manager</h1>
+    <form id="f" novalidate>
+      <label class="field" for="email">Email address</label>
+      <input id="email" type="email" autocomplete="username">
+      <label class="field" for="pw">Password</label>
+      <input id="pw" type="password" autocomplete="current-password">
+      <div class="row">
+        <label class="switch"><input type="checkbox" aria-label="Remember me"><span></span></label>
+        <span>Remember me <a href="#">Reset Password</a></span>
+      </div>
+      <button type="submit">SIGN IN</button>
+    </form>
+    <div id="msg" role="status"></div>
+    <p class="new">Are you a new student? <a href="#">Create Account</a></p>
+  </div>
+</main>
+<footer>Copyright © 2026 KUHeS ICT Team.</footer>
+<script>
+// Front-end demo only: nothing is sent or stored. Connect to your own backend.
+document.getElementById('f').addEventListener('submit',function(e){
+  e.preventDefault();
+  var ok=document.getElementById('email').value.trim()&&document.getElementById('pw').value;
+  document.getElementById('msg').textContent=ok?'Demo only: connect this form to your own backend.':'Enter your email address and password.';
+});
+</script>
+</body>
+</html>
